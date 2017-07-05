@@ -271,6 +271,7 @@ module Kitchen
         def login_command_for_linux
           args  = %W{-u #{options[:user]}}
           args += %W{-p #{options[:password]}} if options.key?(:password)
+          args += %W{/clipboard}
           args += %W{#{URI.parse(options[:endpoint]).host}:#{rdp_port}}
 
           LoginCommand.new("rdesktop", args)
